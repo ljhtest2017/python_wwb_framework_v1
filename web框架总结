@@ -1,0 +1,36 @@
+fixture:
+conftest.py == pytest自动识别文件，名字不可以更改。存放fixtures，可以放多个
+一个fixture表示 一个前置和后置
+可以放多个
+
+实现fixture：
+装饰器+函数实现
+@pytest.fixture
+
+调用的时候：测试用例、测试类前面
+@pytest.mark.usefixtures("fixture函数名称")
+
+参数化
+在用例的前面加上
+@pytest.mark.parametrize("参数名", 列表数据)
+参数名：用来接收每一项数据，并作为测试用例的参数
+列表数据：一组测试数据。
+
+
+失败重运行机制
+使用方式
+命令行参数
+pytest --reruns 重试次数
+
+pytest --reruns 重试次数 --reruns-delay 次数直接的延时设置（单位：秒）
+
+
+PO
+locator  pageobjects(页面的功能函数设计)  testdatas   testcases
+testcase = pageobjects + testdatas
+
+1.basepage == 日志、失败截图、基本的webdriver做了封装、异常处理
+2.pytest == 用例筛选方便，参数化（ddt).fixture(前置和后置==公有化）、重运行机制、自动发现用例、assert断言、allu报告
+
+selenium webdriver + po + pytest
+优化了页面对象。提前basepage，封装基本操作，增加了日志和失败截图
