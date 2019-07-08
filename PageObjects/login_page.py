@@ -2,11 +2,9 @@
 # -*- coding: UTF-8 -*-
 from Common.BasePage import BasePage
 from PageLocators.login_locator import LoginLocator
-import pytest
 
-@pytest.mark.smoke
+
 class LoginPage(LoginLocator, BasePage):
-    @pytest.mark.login
     def login(self, username, passwd):
         # self.driver.find_element(self.username_input).send_keys(username)
         # self.driver.find_element(self.passwd_input).send_keys(passwd)
