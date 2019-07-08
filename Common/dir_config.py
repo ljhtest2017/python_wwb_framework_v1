@@ -10,3 +10,10 @@ htmlreport_dir = os.path.join(base_dir, "HtmlTestReport")
 logs_dir = os.path.join(base_dir, "Logs")
 screenshot_dir = os.path.join(base_dir, "ScreenShot")
 
+if __name__ == '__main__':
+    print(base_dir)
+    print(testcases_dir)
+    print(testdatas_dir)
+    print(htmlreport_dir)
+    print(logs_dir)
+    print(screenshot_dir)

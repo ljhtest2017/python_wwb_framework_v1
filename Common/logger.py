@@ -11,7 +11,10 @@ handler_1 = logging.StreamHandler()
 curTime = time.strftime("%Y-%m-%d %H%M%S", time.localtime())
 filename =  dir_config.logs_dir+"/Web_Autotest_{0}.log".format(curTime)
 handler_2 = RotatingFileHandler(filename)
-# 设置rootlogger的输出内容格式，输出渠道
+# 设置root-logger的输出内容格式，输出渠道
 logging.basicConfig(format=fmt,  datefmt=datefmt,level=logging.INFO, handlers=[handler_1,handler_2])
 
-logging.info("hehe")
+if __name__ == '__main__':
+
+    logging.info("hehe")
+
