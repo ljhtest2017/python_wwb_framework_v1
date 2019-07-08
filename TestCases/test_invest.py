@@ -8,20 +8,23 @@
 # 3、不走web页面，走接口来实现。
 # 有可投资的标
 # 步骤
-#标页面-获取用户可用余额
+# 标页面-获取用户可用余额
 # 首页直接选第一个标，标页面输入金额，进行投资，投资金额200，点击投资成功弹出框中的，查看并激活按钮。
-#验证
+# 验证
 # 个人页面：获取用户可用余额
 # 比对： 余额=投资前-投资后
 # 个人页面还剩多少钱，有没有少。利息是多少
 import unittest
-from TestDatas.common_data import *
+import pytest
 from selenium import webdriver
+from TestDatas.common_data import *
 from PageObjects.login_page import LoginPage
 from PageObjects.index_page import IndexPage
 from PageObjects.invest_page import BigPage
 from PageObjects.user_page import UserPage
 
+
+@pytest.mark.invest
 class TestInvest(unittest.TestCase):
 
     def setUp(self):
@@ -34,6 +37,10 @@ class TestInvest(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
+    def demo(self):
+        pass
+
+    @pytest.mark.smoke
     def test_invest_success(self):
         # 首页直接选第一个标，
         IndexPage(self.driver).click_first_invest_button()
@@ -48,7 +55,9 @@ class TestInvest(unittest.TestCase):
         # 个人页面：获取用户可用余额
         user_money_after_invest = UserPage(self.driver).get_user_left_money()
         # 比对： 余额=投资前-投资后
-        self.assertEqual(200,int(float(user_money_before_invest)-float(user_money_after_invest)))
+        self.assertEqual(
+            200, int(
+                float(user_money_before_invest) - float(user_money_after_invest)))
 
     def test_invest_fail_no100(self):
         pass
@@ -58,6 +67,3 @@ class TestInvest(unittest.TestCase):
 
 # 异常场景 - 用户余额不足 - 手工用例
 # 异常场景 - 投资》 标的可投余额 - 手工用例
-
-
-
